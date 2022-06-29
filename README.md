@@ -4,9 +4,10 @@
 
 This repo contains a simple CLI (Command Line Interface) application in Go, with a basic code organization.
 We use:
-* net/http package to retrieve our cute Gophers
+* net/http package to retrieve REST API
 * Cobra for creating powerful modern CLI applications
-* Viper to ...
+* Viper for configuration files
+* Sodium for encrypt values for Github Secrets
 
 go-github-secrets-cli use [Taskfile](https://dev.to/stack-labs/introduction-to-taskfile-a-makefile-alternative-h92) (a Makefile alternative). 
 

@@ -9,6 +9,9 @@ import (
 	"io"
 	"net/http"
 	"os"
+	// "strings"
+
+	"io/ioutil"
 
 	"github.com/spf13/cobra"
 )
@@ -71,10 +74,39 @@ var getOtherCmd = &cobra.Command{
     },
 }
 
+var readFile = &cobra.Command{
+    Use:   "read",
+    Short: "This command will read a file",
+    Long:  `Read file`,
+    Run: func(cmd *cobra.Command, args []string) {
+        if len(args) > 1 {
+            fmt.Println("Too many arguments. You can only have one which is the name of your reminder")
+        }
+
+        file, _ := cmd.Flags().GetString("file")
+
+        data, err := ioutil.ReadFile(file)
+
+        if err != nil {
+            fmt.Println(err)
+        }
+
+        fmt.Println(string(data))
+    },
+}
+
 func init() {
 	rootCmd.AddCommand(getCmd)
 
 	rootCmd.AddCommand(getOtherCmd)
+
+    rootCmd.AddCommand(readFile)
+
+    readFile.PersistentFlags().StringP("file", "F", ".env", "-F .env | file .env")
+    // readFile.PersistentFlags().StringP("dir", "D", "./tmp/", "-D './tmp/' | dir './tmp/' ")
+    
+    readFile.MarkPersistentFlagRequired("file")
+    // readFile.MarkPersistentFlagRequired("dir")
 
 	// Here you will define your flags and configuration settings.
 
