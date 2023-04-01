@@ -1,4 +1,4 @@
-# go-github-secrets-cli
+# github-secrets-cli
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/scraly/learning-go-by-examples)](https://goreportcard.com/report/github.com/scraly/learning-go-by-examples)
 
